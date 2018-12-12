@@ -10,7 +10,7 @@ import {
 } from "react-native";
 //
 import { connect } from "react-redux";
-import actions from "../actions/Add";
+import actions from "../redux/actions/Action";
 
 class TodoAdd extends Component {
     constructor(props) {

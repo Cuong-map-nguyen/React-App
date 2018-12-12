@@ -1,10 +1,8 @@
 import React, { Component } from "react";
-import { View, StyleSheet } from "react-native";
-//
-import Todo from "./Todo/index";
+import Todo from "../Todo/index";
 //
 import { Provider } from "react-redux";
-import store from "./store/index";
+import store from "../redux/store/index";
 
 class index extends Component {
     render() {

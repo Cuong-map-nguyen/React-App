@@ -4,10 +4,9 @@ import React, { Component } from "react";
 /* Presentational */
 import { View, StyleSheet, Text, FlatList, TouchableOpacity } from "react-native";
 import { connect } from 'react-redux';
-// import styles from './styles';
+import actions from "../redux/actions/Action";
 
-class TodoAdd extends Component {
-
+class TodoList extends Component {
     getData(){
         const {myFilter, myValue} = this.props;
         if (myFilter == 'Show_All') {
@@ -19,22 +18,6 @@ class TodoAdd extends Component {
             return myValue.filter(e => !e.memorized);
         }
     }
-
-    Checked = (item) => {
-        if (item.memorized == true) {
-            this.props.dispatch({
-                type: 'Checked',
-                id : item.id
-            });
-        } else {
-            this.props.dispatch({
-                type: 'Check',
-                id : item.id
-            });
-        }
-        
-    }
-
     render() {
         return (
             <View style={styles.div}>
@@ -44,7 +27,7 @@ class TodoAdd extends Component {
                     renderItem={({ item, index }) => {
                         return (
                             <View key={index} style={styles.viewFL}>
-                                <TouchableOpacity onPress={() => {this.Checked(item)}}>
+                                <TouchableOpacity onPress={item.memorized == true ? () => {this.props.Checked(item.id)} : () => {this.props.Check(item.id)} }>
                                     <View style={styles.item}>
                                         <Text style={item.memorized == true ? styles.line : styles.text}>{item.en}</Text>
                                         <Text style={item.memorized == true ? styles.line : styles.text}>{item.vn}</Text>
@@ -59,6 +42,12 @@ class TodoAdd extends Component {
         );
     }
 }
+
+const mapDispatchToProps = dispatch => ({
+    Check: (id) => dispatch(actions.check(id)),
+    Checked: (id) => dispatch(actions.checked(id))
+});
+
 function mapStateProps(state){
     return {
          myValue : state.arrayWords,
@@ -66,7 +55,7 @@ function mapStateProps(state){
     };
 }
 
-export default connect(mapStateProps)(TodoAdd);
+export default connect(mapStateProps,mapDispatchToProps)(TodoList);
 
 const styles = StyleSheet.create({
     div: {

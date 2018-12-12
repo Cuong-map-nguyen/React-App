@@ -5,6 +5,7 @@ import React, { Component } from "react";
 import { View, StyleSheet, Text } from "react-native";
 import { ButtonGroup } from 'react-native-elements';
 import { connect } from 'react-redux';
+import actions from "../redux/actions/Action";
 
 class TodoFillter extends Component {
     constructor(props) {
@@ -14,13 +15,13 @@ class TodoFillter extends Component {
     _onFill = (index) => {
         this.setState({index});
         if (index == 0) {
-    		this.props.dispatch({ type : "Show_All" });
+    		this.props.ShowAll();
         }
         if (index == 1) {
-    		this.props.dispatch({ type : "Show_Check" });
+    		this.props.ShowCheck();
         }
         if (index == 2) {
-    		this.props.dispatch({ type : "Show_isCheck" });
+    		this.props.ShowChecked();
     	}
     }
     render() {
@@ -38,11 +39,14 @@ class TodoFillter extends Component {
         );
     }
 }
-function mapStateToProps(state){
-    return { myFilter : state.fillterStatus };
-}
 
-export default connect(mapStateToProps)(TodoFillter);
+const mapDispatchToProps = dispatch => ({
+    ShowAll: () => dispatch(actions.showAll()),
+    ShowCheck: () => dispatch(actions.showCheck()),
+    ShowChecked: () => dispatch(actions.showChecked())
+});
+
+export default connect(null,mapDispatchToProps)(TodoFillter);
 
 const styles = StyleSheet.create({
     div: {
