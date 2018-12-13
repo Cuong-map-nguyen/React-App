@@ -1,7 +1,7 @@
 /** @format */
 
 import {AppRegistry, YellowBox} from 'react-native';
-import Redux from './WeatherApiRedux/src/redux/index';
+import Redux from './ImageSwipeLanguage/index';
 import {name as appName} from './app.json';
 
 YellowBox.ignoreWarnings(['Encountered an error loading page',    // WebView uri: result.url and url failing to load - "bloomberg suneq" https://github.com/facebook/react-native/issues/7839#issuecomment-224111608

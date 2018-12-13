@@ -33,7 +33,6 @@ export default class Khuong extends Component<Props> {
 				}
 				this.setState({	
 					todo : this.state.todo.concat(todos),
-					// mang : this.state.mang.concat(todos),
 					text : '',
 				}) 
 				

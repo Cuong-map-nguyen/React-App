@@ -1,5 +1,6 @@
 import {createStore, applyMiddleware} from 'redux';
 import ReduxThunk from 'redux-thunk';
+import ReduxSaga from 'redux-saga';
 
 const defaultState = {
   cityName: null,
@@ -37,4 +38,6 @@ const reducer = (state = defaultState, action) => {
 };
 
 const store = createStore(reducer, applyMiddleware(ReduxThunk));
+// const store = createStore(reducer, applyMiddleware(ReduxSaga));
+
 export default store;
