@@ -9,24 +9,24 @@ import {
 } from "react-native";
 import Swiper from "react-native-swiper";
 import { SearchBar } from "react-native-elements";
-import I18n from '../I18n';
+import I18n from "../I18n";
 
 export default class componentName extends Component {
   constructor(props) {
     super(props);
-	this.state = {};
+    this.state = {};
   }
 
   _onPressButton() {
-	  const {language} = this.state;
-	  if(language){
-		I18n.locale = language;
-		this.setState({
-			languages : language
-		})
-	  }
+    const { language } = this.state;
+    if (language) {
+      I18n.locale = language;
+      this.setState({
+        languages: language
+      });
+    }
   }
-  
+
   render() {
     return (
       <View style={styles.div}>
@@ -76,14 +76,17 @@ export default class componentName extends Component {
               <Text style={{ color: "#fff" }}> Change laguage </Text>
             </View>
           </TouchableOpacity>
-		  <Picker
-			selectedValue={this.state.language}
-			style={{ height: 50, width: 100 }}
-			onValueChange={(itemValue, itemIndex) => this.setState({language: itemValue})}>
-			<Picker.Item label="-- Chon ngon ngu --" value="" />
-			<Picker.Item label="Tiếng anh" value="en-US" />
-			<Picker.Item label="Tiếng Việt" value="vi-VN" />
-		</Picker>
+          <Picker
+            selectedValue={this.state.language}
+            style={{ height: 50, width: 100 }}
+            onValueChange={(itemValue, itemIndex) =>
+              this.setState({ language: itemValue })
+            }
+          >
+            <Picker.Item label="-- Chon ngon ngu --" value="" />
+            <Picker.Item label="Tiếng anh" value="en-US" />
+            <Picker.Item label="Tiếng Việt" value="vi-VN" />
+          </Picker>
         </View>
         <View style={styles.lg}>
           <Text>{I18n.t("hello world")}</Text>
