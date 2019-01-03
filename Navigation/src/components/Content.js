@@ -1,8 +1,8 @@
 //import liraries
 import React, { Component } from "react";
-import { View, StyleSheet, ScrollView } from "react-native";
-import Name from "../data/ArrayData";
-import ItemData from "../data/itemData";
+import { View, StyleSheet, BackHandler, Alert } from "react-native";
+import Name from "../data/Array/ArrayData";
+import ItemData from "../data/Items/itemData";
 // create a component
 class Content extends Component {
   	constructor(props) {
@@ -14,16 +14,14 @@ class Content extends Component {
 
   	render() {
     	return (
-      		<ScrollView showsVerticalScrollIndicator={false}>
-        		<View style={styles.container}>
-          			<View style={styles.divLeft}>
-            			{
-              				this.state.names.map((data, index) => (
-              					<ItemData key={index} navigate={this.props.navigation} data={data} />))
-            			}
-          			</View>
-        		</View>
-      		</ScrollView>
+        	<View style={styles.container}>
+          		<View style={styles.divLeft}>
+            		{
+              			this.state.names.map((data, index) => (
+              				<ItemData key={index} ActiveLink={this.activeLink} navigate={this.props.navigation} data={data} />))
+            		}
+          		</View>
+        	</View>
     	);
   	}
 }
@@ -33,6 +31,7 @@ const styles = StyleSheet.create({
   	container: {
 		flex: 1,
 		flexDirection: "row",
+		flexWrap:'wrap',
 		alignContent: "center",
 		justifyContent: "center"
   	},

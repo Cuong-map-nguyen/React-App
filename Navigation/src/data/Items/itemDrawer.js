@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import { Text, TouchableOpacity, StyleSheet } from 'react-native';
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
+import I18n from "../../lang/I18n";
 
 export default class Item extends Component {
   	constructor(props) {
     	super(props);
 		this.state = {
-			reActive: false
+			reActive: false,
 		}
   	}
 
@@ -15,14 +16,16 @@ export default class Item extends Component {
     	this.setState({
       		reActive: !this.state.reActive
     	})
-  	}
-  
+	}
+
   	render() {
     	const { data } = this.props;
     	return (
       		<TouchableOpacity style={data.active ? [styles.btnName, styles.btnNameActive] : styles.btnName} onPress={() => this.SetActive(data.route)}>
         		<Icon name={data.active ? data.iconActive : data.icon} size={25} style={data.active ? [styles.txtActive, styles.txtIconActive] : styles.Active} />
-        		<Text style={data.active ? [styles.txtName, styles.txtnameActive] : styles.txtName}> {data.caption} </Text>
+        		<Text style={data.active ? [styles.txtName, styles.txtnameActive] : styles.txtName}> 
+					{I18n.currentLocale() == 'vi-VN' ? data.captionVietnamese : data.captionEnglish} 
+				</Text>
       		</TouchableOpacity>
     	);
   	}

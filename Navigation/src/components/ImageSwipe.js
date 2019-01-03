@@ -11,17 +11,17 @@ class ImageSwipe extends Component {
             super(props);
             this.state = { 
                 activeSlide : 0,
-                data:[{image:(require('../images/Dong.jpeg'))},
-                {image:(require('../images/He.jpg'))},
-                {image:(require('../images/between.jpg'))},
-                {image:(require('../images/Thu.jpg'))},
-                {image:(require('../images/Xuan.jpg'))},]
-             };
+                data:[{image:(require('../images/imageSwipe/Dong.jpeg'))},
+                {image:(require('../images/imageSwipe/He.jpg'))},
+                {image:(require('../images/imageSwipe/between.jpg'))},
+                {image:(require('../images/imageSwipe/Thu.jpg'))},
+                {image:(require('../images/imageSwipe/Xuan.jpg'))}]
+            };
         }
 
     _renderItem ({item, index}, parallaxProps) {
         return (
-            <View style={styles.item}>
+            <View style={{padding:5}}>
                 <ParallaxImage
                     source={item.image}
                     containerStyle={{width:'90%',height:'100%'}}
@@ -39,18 +39,21 @@ class ImageSwipe extends Component {
             <Pagination
               dotsLength={data.length}
               activeDotIndex={activeSlide}
-              containerStyle={{}}
+              containerStyle={{ paddingVertical: 0 }}
               dotStyle={styles.doc}
               inactiveDotStyle={{}}
             />
         );
     }
-
+    componentDidMount(){
+        this.setState(
+            {activeSlide : 2}
+        )
+    }
     render() {
         return (
-            <View style={{flex:1}}>
-                <View style={{width:'100%',height:'100%'}}>
-                    <Carousel
+            <View style={{width:'100%',height:Dimensions.get('window').height/2.2}}>
+                <Carousel
                     style={styles.container}
                     data={this.state.data}
                     renderItem={this._renderItem}
@@ -63,10 +66,8 @@ class ImageSwipe extends Component {
                     <View style={styles.divPaging}>
                         { this.pagination }
                         <Text style={{fontFamily:'D',fontSize:20}}>{I18n.t('MustSee')}</Text>
-                        { this.pagination }
                     </View>
-                </View>
-            </View>    
+            </View>
         );
     }
 }
@@ -85,7 +86,6 @@ const styles = StyleSheet.create({
         backgroundColor: '#1c88ed'
     },
     divPaging:{
-        flexDirection:'row',
         alignItems:'center', 
         justifyContent:'center',
         borderColor: '#abab',

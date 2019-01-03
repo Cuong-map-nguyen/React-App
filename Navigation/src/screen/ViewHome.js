@@ -1,11 +1,15 @@
 //import liraries
 import React, { Component } from 'react';
-import { View, StyleSheet } from 'react-native';
+import { View, StyleSheet, BackHandler } from 'react-native';
 import Content from '../components/Content';
 import ImageSwipe from '../components/ImageSwipe';
 
 // create a component
-class Screen1 extends Component {
+class ViewHome extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {  };
+    }
     render() {
         return ( 
             <View style={styles.container}>
@@ -39,4 +43,4 @@ const styles = StyleSheet.create({
     }
 });
 //make this component available to the app
-export default Screen1;
+export default ViewHome;

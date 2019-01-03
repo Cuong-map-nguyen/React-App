@@ -1,63 +1,72 @@
 const Route = [
   	{
 		route: "Eat & Drink",
-		caption: "Ẩm thực",
+		captionEnglish:'Eat & Drink',
+		captionVietnamese: "Ẩm thực",
 		active: true,
 		icon: "food-fork-drink",
 		iconActive: "food-fork-drink"
   	},
 	{
 		route: "Event",
-		caption: "Sự kiện",
+		captionEnglish:'Event',
+		captionVietnamese: "Sự kiện",
 		active: false,
 		icon: "eventbrite",
 		iconActive: "eventbrite"
 	},
 	{
 		route: "See & Do",
-		caption: "Vui chơi",
+		captionEnglish:'See & Do',
+		captionVietnamese: "Vui chơi",
 		active: false,
 		icon: "human-handsup",
 		iconActive: "human-handsup"
 	},
 	{
 		route: "Stay",
-		caption: "Nghỉ ngơi",
+		captionEnglish:'Stay',
+		captionVietnamese: "Nghỉ ngơi",
 		active: false,
 		icon: "bed-empty",
 		iconActive: "bed-empty"
 	},
 	{
 		route: "Healthy Care",
-		caption: "Sức Khỏe",
+		captionEnglish:'Healthy Care',
+		captionVietnamese: "Sức Khỏe",
 		active: false,
 		icon: "heart-pulse",
 		iconActive: "heart-pulse"
 	},
 	{
 		route: "Goverment",
-		caption: "Chính phủ",
+		captionEnglish:'Goverment',
+		captionVietnamese: "Chính phủ",
 		active: false,
 		icon: "office-building",
 		iconActive: "office-building"
 	},
 	{
 		route: "Help Me",
-		caption: "Giúp đỡ",
+		captionEnglish:'Help Me',
+		captionVietnamese: "Giúp đỡ",
 		active: false,
 		icon: "exclamation",
 		iconActive: "exclamation"
 	},
 	{
 		route: "About Us",
-		caption: "Thông tin của chúng tôi",
+		captionEnglish:'About Us',
+		captionVietnamese: "Thông tin của chúng tôi",
 		active: false,
 		icon: "alpha-i-box",
 		iconActive: "alpha-i-box"
 	},
 	{
 		route: "Lang",
-		caption: "Ngôn ngữ",
+		captionEnglish:'Lang',
+		captionVietnamese: "Ngôn ngữ",
 		active: false,
 		icon: "translate",
 		iconActive: "translate"

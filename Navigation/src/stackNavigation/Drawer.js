@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { View, Image, ScrollView, TouchableOpacity, Text, StyleSheet } from 'react-native';
 import lodash from 'lodash';
-import Route from '../data/ArrayDrawer';
-import Item from '../data/item';
+import Route from '../data/Array/ArrayDrawer';
+import Item from '../data/Items/itemDrawer';
 import Modal from "react-native-modal";
 import I18n from "../lang/I18n";
-import RouteLang from '../data/ArrayLang';
-import ItemLang from '../data/itemLang';
+import RouteLang from '../data/Array/ArrayLang';
+import ItemLang from '../data/Items/itemLang';
 
 export default class Drawer extends Component {
   	constructor(props) {
@@ -56,7 +56,7 @@ export default class Drawer extends Component {
 			<View style={{flex:1}}>
 				<View style={styles.divImageDrawer}>
 					<Image
-						source={require("../images/ic_Drawer.jpg")}
+						source={require("../images/imageSwipe/ic_Drawer.jpg")}
 						style={styles.imageDrawer}/>
 				</View>
 				<ScrollView showsVerticalScrollIndicator={false}>
