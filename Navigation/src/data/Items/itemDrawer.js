@@ -13,9 +13,7 @@ export default class Item extends Component {
 
   	SetActive(r) {
     	this.props.ActiveLink(r);
-    	this.setState({
-      		reActive: !this.state.reActive
-    	})
+    	this.setState({ reActive: !this.state.reActive })
 	}
 
   	render() {

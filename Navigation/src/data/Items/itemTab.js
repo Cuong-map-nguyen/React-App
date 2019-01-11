@@ -21,7 +21,7 @@ export default class Item extends Component {
 									<TouchableOpacity style={styles.btnName} onPress={() => {}} >
 										<View style={{ flexDirection: "row"}}>
 											<Icon name={data.icon} size={30}/>
-											<Text style={styles.txtName}>{data.route}</Text>
+											<Text style={styles.txtName}>{I18n.currentLocale() == 'vi-VN' ? data.captionVietnamese : data.captionEnglish}</Text>
 										</View>
 									</TouchableOpacity>
 									<View style={styles.divItem}>
@@ -64,7 +64,7 @@ const styles = StyleSheet.create({
 		marginTop: 5 
 	},
 	divContent:{
-		width:Dimensions.get("window").width / 2.22
+		width:'100%'
 	},
 	textItem:{
 		alignSelf: 'center',
@@ -84,7 +84,7 @@ const styles = StyleSheet.create({
 		marginBottom:2
 	},
 	imageBackground:{
-		width: Dimensions.get("window").width / 2.22,
+		width: '100%',
 		height: Dimensions.get("window").height / 2.6,
 		alignItems:'center',
 		justifyContent:'flex-end',
@@ -94,9 +94,6 @@ const styles = StyleSheet.create({
 		fontSize: 25,
 		fontFamily: "B",
 		color: "#5FB4EC"
-	},
-	txtnameActive: {
-		color: "#fff"
 	},
 	btnName: {
 		marginTop: 15,

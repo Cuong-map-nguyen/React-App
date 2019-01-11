@@ -1,48 +1,87 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow
- */
+import React, { Component } from 'react';
+import { View, Text, StyleSheet } from 'react-native';
+import MapView from 'react-native-maps';
 
-import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View} from 'react-native';
+class GeolocationExample extends Component {
+  constructor(props) {
+    super(props);
 
-const instructions = Platform.select({
-  ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
-  android:
-    'Double tap R on your keyboard to reload,\n' +
-    'Shake or press menu button for dev menu',
-});
+    this.state = {
+      region:{
+        latitude:16.0364827,
+        longitude:108.2182046,
+        latitudeDelta:0.1,
+        longitudeDelta:0.1,
+      },
+      error: null,
+      marker:{
+        latitude:16.0364827,
+        longitude:108.2182046,
+      }
+    };
+  }
 
-export default class App extends Component {
+  componentWillMount() {
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        console.log('pos',position)
+        this.setState({
+          region:{
+            latitude:position.coords.latitude,
+            longitude:position.coords.longitude,
+            latitudeDelta:0.01,
+            longitudeDelta:0.01,
+          },
+          error: null,
+          marker:{
+            latitude:position.coords.latitude,
+            longitude:position.coords.longitude,
+          }
+        });
+      },
+      (error) => this.setState({ error: error.message }),
+      { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000 },
+    );
+  }
+  componentWillReceiveProps(nextProps) {
+    const duration = 500
+  
+    if (this.props.coordinate !== nextProps.coordinate) {
+      if (Platform.OS === 'android') {
+        if (this.marker) {
+          this.marker._component.animateMarkerToCoordinate(
+            nextProps.coordinate,
+            duration
+          );
+        }
+      } else {
+        this.state.coordinate.timing({
+          ...nextProps.coordinate,
+          duration
+        }).start();
+      }
+    }
+  }
   render() {
     return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>Welcome to React Native!</Text>
-        <Text style={styles.instructions}>To get started, edit App.js</Text>
-        <Text style={styles.instructions}>{instructions}</Text>
-      </View>
+      <MapView style={styles.map} 
+        initialRegion={this.state.region}>
+        <MapView.Marker.Animated 
+        title={'Bạn đang ở đây'}
+        description={'ádasd'}
+        ref={marker => { this.marker = marker }}
+        coordinate={this.state.marker}/>
+       </MapView>
     );
   }
 }
-
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
+  map: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
   },
 });
+export default GeolocationExample;

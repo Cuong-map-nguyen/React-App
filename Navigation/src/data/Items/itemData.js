@@ -6,16 +6,14 @@ import I18n from "../../lang/I18n";
 export default class Item extends Component {
   	constructor(props) {
     	super(props);
-    	this.state = {
-
-		};
+    	this.state = {};
 	}
 	  
   	render() {
-    	const { data } = this.props;
+		const { data } = this.props;
     	return (
       		<View>
-        		<TouchableOpacity style={styles.btnName} onPress={() => { this.props.navigate.navigation.navigation.navigate(data.route) }} >
+        		<TouchableOpacity style={styles.btnName} onPress={() => { this.props.navigate.navigate(data.route) }} >
 					<View style={{ flexDirection: "row"}}>
 						<Icon name={data.icon} size={30}/>
 						<Text style={styles.txtName}>
@@ -25,7 +23,7 @@ export default class Item extends Component {
         		</TouchableOpacity>
         		<View style={styles.divItem}>
           			{data.item.length > 0 && data.item.map((data, i) => (
-              			<TouchableOpacity key={i} style={{ margin: 5 }} onPress={() => { this.props.navigate.navigation.navigation.navigate(data.route) }} >
+              			<TouchableOpacity key={i} style={{ margin: 5 }} onPress={() => { this.props.navigate.navigate(data.route) }} >
                 			<View>
                   				<ImageBackground resizeMode={'cover'} style={styles.imageBackground} source={data.image}>
                   					<Text style={styles.textItem}>
@@ -61,7 +59,7 @@ const styles = StyleSheet.create({
 		marginBottom:2
 	},
 	imageBackground:{
-		width: Dimensions.get("window").width / 2.16,
+		width: Dimensions.get("window").width / 2.2,
 		height: Dimensions.get("window").height / 2.6,
 		alignItems:'center',
 		justifyContent:'flex-end',
@@ -71,9 +69,6 @@ const styles = StyleSheet.create({
 		fontSize: 25,
 		fontFamily: "B",
 		color: "#5FB4EC"
-	},
-	txtnameActive: {
-		color: "#fff"
 	},
 	btnName: {
 		marginTop: 15,

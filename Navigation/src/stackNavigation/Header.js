@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { View, StyleSheet, Picker, Text, StatusBar, Dimensions, Image } from "react-native";
+import { View, StyleSheet, Picker, Text, StatusBar, Dimensions, Image, TouchableOpacity } from "react-native";
 import { Header, SearchBar } from "react-native-elements";
 import Icons from "react-native-vector-icons/AntDesign";
 
@@ -7,34 +7,20 @@ export default class NaviHeader extends Component {
   	constructor(props) {
     	super(props);
     	this.state = {
-			statusSearch: 1,
-      		statusDraw: 1
+			statusSearch: false,
+      		statusDraw: false
     	};
   	}
 
   	_press = () => {
-    	const { statusDraw } = this.state;
-    	if (statusDraw == 1) {
-      		this.props.openDrawer();
-      		this.setState({ statusDraw: 2 });
-    	} else {
-      		this.props.closeDrawer();
-      		this.setState({ statusDraw: 1 });
-    	}
-  	};
+		this.setState({ statusDraw: !this.state.statusDraw }) 
+    	if (this.state.statusDraw == false) { this.props.openDrawer() } 
+		else { this.props.closeDrawer() }
+	  };
+	  
+	_pressBack = () => { this.props.goBack() };
 
-	_pressBack = () => {
-    	this.props.goBack();
-  	};
-
-	_pressSearch = () => {
-    	const { statusSearch } = this.state;
-    	if (statusSearch == 1) {
-      		this.setState({	statusSearch: 2 });
-    	} else {
-      		this.setState({ statusSearch: 1 });
-    	}
-  	};  
+	_pressSearch = () => { this.setState({ statusSearch: !this.state.statusSearch }) };  
 
 	renderGo = () => (
 		<View style={styles.div}>
@@ -70,9 +56,9 @@ export default class NaviHeader extends Component {
 
   	render() {
     	return (
-			<View style={styles.header}>
+			<View style={styles.divHeader}>
 				<StatusBar backgroundColor="#01579B" />
-				<Header backgroundColor="#01579B"
+				<Header containerStyle={styles.header} 
 					leftComponent={ 
 						<View style={styles.div2}>
 							{this.props.state.routeName == 'Home' ? 
@@ -80,20 +66,20 @@ export default class NaviHeader extends Component {
 								: 
 								<Icons name="arrowleft" size={32} color="#ffff" onPress={this._pressBack} />
 							}
-							{this.state.statusSearch == 1 ? 
-								<Text style={styles.text}>{this.props.state.routeName}</Text> 
-								:
-								<Text></Text>
+							{this.state.statusSearch == false ? 
+								<Text style={styles.text}>{this.props.state.routeName}</Text> : null
 							}
 						</View>
 					}
 					rightComponent={
 						<View>
 							{this.props.state.routeName == 'Home' ? 
-								this.state.statusSearch == 1 ? this.renderGo() : this.renderSearch()
+								this.state.statusSearch == false ? this.renderGo() : this.renderSearch()
 								: 
 								<View style={styles.div}>
-									<Image style={{width:40,height:40}} source={require('../images/imageSwipe/ic_launcher.png')}/>
+									<TouchableOpacity onPress={() => {this.props.navigate('Home')}}>
+										<Image style={{width:40,height:40}} source={require('../images/ic_launcher.png')}/>
+									</TouchableOpacity>
 								</View>
 							}
 						</View>
@@ -122,9 +108,16 @@ const styles = StyleSheet.create({
 		marginLeft: 5,
 		fontSize: 16
   	},
-  	header: {
-    	width: "100%"
-  	},
+  	divHeader: {
+		width: "100%",
+		backgroundColor:'red',
+		alignItems:"center",
+		justifyContent:'center',
+	},
+	header:{
+		backgroundColor: '#01579B',
+		justifyContent: 'space-around',
+	},
   	picker: {
 		height: "100%",
 		width: Dimensions.get('window').width/2.5,

@@ -5,16 +5,12 @@ import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 export default class Item extends Component {
   	constructor(props) {
     	super(props);
-    	this.state = {
-      		reActive: false
-    	}
+    	this.state = {reActive: false}
   	}
 
   	SetActive(r) {
     	this.props.ActiveLink(r);
-    	this.setState({
-      		reActive: !this.state.reActive
-    	})
+    	this.setState({ reActive: !this.state.reActive })
   	}
   
   	render() {

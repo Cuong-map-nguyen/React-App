@@ -1,19 +1,17 @@
-//import liraries
 import React, { Component } from 'react';
 import { View, StyleSheet, ScrollView } from 'react-native';
 import { createStackNavigator, createDrawerNavigator } from "react-navigation";
-// 
-import ViewHome from "../screen/ViewHome";
+import SplashScreen from 'react-native-smart-splash-screen';
+//  Screen
+import HomeData from "../screen/Data";
 import ListDetailAll from "../screen/ListDetailAll";
 import Detail from "../screen/Detail";
-// 
-import EatDrink from "../screen/EatDrink";
-// 
+import MapDetail from "../screen/MapDetail";
+import AllTag from "../screen/Tag";
+// stackNavigation
 import Header from "../stackNavigation/Header";
 import Drawer from "../stackNavigation/Drawer";
-import SplashScreen from 'react-native-smart-splash-screen';
 
-// create a component
 class index extends Component {
 
 	componentDidMount () {
@@ -22,26 +20,22 @@ class index extends Component {
 		   duration: 850,
 		   delay: 500,
 		})		
-	   }
+	}
 	  
     render() {
         return (
             <View style={styles.container}>
-              	<View style={styles.container}>
-					<ScrollView showsVerticalScrollIndicator={false}>
-						<ViewHome navigation={this.props}/>
-					</ScrollView>
-              	</View>
-      		</View>
+				<ScrollView showsVerticalScrollIndicator={false}>
+					<HomeData navigation={this.props.navigation}/>
+				</ScrollView>
+            </View>
         );
     }
 }
 
 const DrawerNavigator = createDrawerNavigator(
     {	
-		Home:{
-			screen: index
-		}
+		Home:{ screen: index }
     },
     {
       	contentComponent: props => <Drawer {...props} />
@@ -50,110 +44,44 @@ const DrawerNavigator = createDrawerNavigator(
 //make this component available to the app
 export default createStackNavigator(
     {
-        Home: {
-            screen: DrawerNavigator
-		},
-		Detail: {
-			screen: Detail
-		},
+        Home: { screen: DrawerNavigator },
+		Detail: { screen: Detail },
+		MapDetail: { screen: MapDetail },
 		//  Tag , category
-		'Eat & Drink': {
-        	screen: EatDrink
-      	},
-		'Event': {
-        	screen: EatDrink
-      	},
-      	'See & Do': {
-        	screen: EatDrink
-      	},
-      	'Stay': {
-        	screen: EatDrink
-      	},
-      	'Healthy Care': {
-        	screen: EatDrink
-      	},
-      	'Goverment': {
-        	screen: EatDrink
-      	},
-      	'Help Me': {
-        	screen: EatDrink
-      	},
-      	'About Us': {
-        	screen: EatDrink
-		},
+		'Eat & Drink': { screen: AllTag	},
+		'Event': { screen: AllTag },
+      	'See & Do': { screen: AllTag },
+      	'Stay': { screen: AllTag },
+      	'Healthy Care': { screen: AllTag },
+      	'Goverment': { screen: AllTag },
+      	'Help Me': { screen: AllTag },
+      	'About Us': { screen: AllTag },
 		// item
-		Restaurant: {
-			screen: ListDetailAll
-		},
-		StreetFood: {
-			screen: ListDetailAll
-		},
-		BarPub: {
-			screen: ListDetailAll
-		},
-		CoffeeShop: {
-			screen: ListDetailAll
-		},
-		FireWork: {
-			screen: ListDetailAll
-		},
-		DragonFire: {
-			screen: ListDetailAll
-		},
-		Golf: {
-			screen: ListDetailAll
-		},
-		Attraction: {
-			screen: ListDetailAll
-		}, 
-		Handicraft: {
-			screen: ListDetailAll
-		}, 
-		Churches: {
-			screen: ListDetailAll
-		}, 
-		Resort: {
-			screen: ListDetailAll
-		}, 
-		Hotel: {
-			screen: ListDetailAll
-		}, 
-		Homestay: {
-			screen: ListDetailAll
-		}, 
-		Spa: {
-			screen: ListDetailAll
-		}, 
-		Hospital: {
-			screen: ListDetailAll
-		}, 
-		Clinic: {
-			screen: ListDetailAll
-		}, 
-		Phamacies: {
-			screen: ListDetailAll
-		}, 
-		Abandon: {
-			screen: ListDetailAll
-		}, 
-		Firefighter: {
-			screen: ListDetailAll
-		},
-		Taxi: {
-			screen: ListDetailAll
-		},
-		About: {
-			screen: ListDetailAll
-		},
+		Restaurant: { screen: ListDetailAll },
+		StreetFood: { screen: ListDetailAll },
+		BarPub: { screen: ListDetailAll },
+		CoffeeShop: { screen: ListDetailAll },
+		FireWork: { screen: ListDetailAll },
+		DragonFire: { screen: ListDetailAll },
+		Golf: { screen: ListDetailAll },
+		Attraction: { screen: ListDetailAll }, 
+		Handicraft: { screen: ListDetailAll }, 
+		Churches: { screen: ListDetailAll }, 
+		Resort: { screen: ListDetailAll }, 
+		Hotel: { screen: ListDetailAll }, 
+		Homestay: { screen: ListDetailAll }, 
+		Spa: { screen: ListDetailAll}, 
+		Hospital: { screen: ListDetailAll }, 
+		Clinic: { screen: ListDetailAll }, 
+		Phamacies: { screen: ListDetailAll }, 
+		Abandon: { screen: ListDetailAll }, 
+		Firefighter: { screen: ListDetailAll },
+		Taxi: { screen: ListDetailAll },
+		About: { screen: ListDetailAll },
     },
     {
         navigationOptions: ({ navigation }) => {
-            return {
-              header: <Header {...navigation} />
-            };
-		},
-		params: {
-			transition: 'right'
+            return { header: <Header {...navigation} />};
 		}
     }
 );   

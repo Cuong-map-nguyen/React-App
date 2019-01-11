@@ -32,9 +32,10 @@ export default class Drawer extends Component {
 		}, function () { 
 			this.props.navigation.navigate(routerActive)
 		})
-  	}
-  	_toggleModal = () =>
-  		this.setState({ visibleModal: !this.state.visibleModal }); 
+	}
+	  
+  	_toggleModal = () => this.setState({ visibleModal: !this.state.visibleModal }); 
+		  
 	//active Link Lang
 	activeLinkLang = (routerActive) => {
 		const routelangs = this.state.routelangs;
@@ -55,16 +56,14 @@ export default class Drawer extends Component {
 		return (
 			<View style={{flex:1}}>
 				<View style={styles.divImageDrawer}>
-					<Image
-						source={require("../images/imageSwipe/ic_Drawer.jpg")}
-						style={styles.imageDrawer}/>
+					<Image source={require("../images/ic_Drawer.jpg")} style={styles.imageDrawer}/>
 				</View>
 				<ScrollView showsVerticalScrollIndicator={false}>
-				{
-					this.state.routes.map((data, index) => (
-						<Item key={index} ActiveLink={this.activeLink} data={data} />
-					))
-				}
+					{
+						this.state.routes.map((data, index) => ( 
+							<Item key={index} ActiveLink={this.activeLink} data={data} />
+						))
+					}
 				</ScrollView>
 				<View>
 					<Modal

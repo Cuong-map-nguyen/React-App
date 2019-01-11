@@ -9,9 +9,7 @@ export default class ListDetail extends Component {
 
 	constructor(props) {
 		super(props);
-    	this.state = {
-      		names: '',
-    	};
+    	this.state = { names: '' };
 	  }
 	
 	componentWillMount(){
@@ -74,8 +72,8 @@ export default class ListDetail extends Component {
 							searchIcon={true} 
 							platform="android"
 							onClear={()=>{}}
-							inputContainerStyle={{width:'100%'}}
-							containerStyle={{width:'100%' ,borderRadius:5}}
+							inputContainerStyle={styles.searchBar}
+							containerStyle={styles.searchBar}
 							cancelIcon={{ type: 'MaterialIcons', name: 'keyboard-hide' }}
 							onCancel={this._pressSearch}
 							clearIcon={{ type: 'MaterialIcons', name: 'clear' }}
@@ -97,6 +95,10 @@ export default class ListDetail extends Component {
 }
 
 const styles = StyleSheet.create({
+	searchBar:{
+		width:'100%',
+		borderRadius:5
+	},
 	container: {
 		flex: 1,
 		alignContent: "center",

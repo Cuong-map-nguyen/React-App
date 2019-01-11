@@ -44,8 +44,8 @@ const Route = [
 		captionEnglish:'Goverment',
 		captionVietnamese: "Chính phủ",
 		active: false,
-		icon: "office-building",
-		iconActive: "office-building"
+		icon: "hospital-building",
+		iconActive: "hospital-building"
 	},
 	{
 		route: "Help Me",
@@ -60,8 +60,8 @@ const Route = [
 		captionEnglish:'About Us',
 		captionVietnamese: "Thông tin của chúng tôi",
 		active: false,
-		icon: "alpha-i-box",
-		iconActive: "alpha-i-box"
+		icon: "account-box",
+		iconActive: "account-box"
 	},
 	{
 		route: "Lang",

@@ -3,8 +3,10 @@ package com.navigation;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
-import com.reactnativecomponent.splashscreen.RCTSplashScreenPackage;
+import com.barefootcoders.android.react.KDSocialShare.KDSocialShare;
+import com.airbnb.android.react.maps.MapsPackage;
 import com.oblador.vectoricons.VectorIconsPackage;
+import com.reactnativecomponent.splashscreen.RCTSplashScreenPackage;
 import com.AlexanderZaytsev.RNI18n.RNI18nPackage;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
@@ -26,6 +28,8 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+          new KDSocialShare(),
+          new MapsPackage(),
           new VectorIconsPackage(),
           new RNI18nPackage(),
           new RCTSplashScreenPackage()
